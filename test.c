@@ -1,0 +1,1 @@
+//funkcja testujaca dzialanie programu
