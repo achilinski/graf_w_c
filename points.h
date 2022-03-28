@@ -3,12 +3,8 @@
 
 #include <stdio.h>
 
-typedef struct {
-    int num;
-    double* weight;
-}points_t;
 
-int read_pts(FILE* inf, points_t *pts);
+int read_pts(char* name, double ** t);
 
 #endif //GRAF_W_C_POINTS_H
 
