@@ -54,6 +54,7 @@ int main(int argc, char **argv) {
             route = 1;
             route_a = atoi(argv[++i]);
             route_b = atoi(argv[++i]);
+            dijkstra (&g, route_a, route_b);
 
         }
         else if (strcmp(argv[i], "--int") == 0)
@@ -88,7 +89,7 @@ int main(int argc, char **argv) {
 
     printf("czy sp: %d\n", bfs(&g));
 
-    dijkstra(&g, 1, 7);
+
 
 
 
