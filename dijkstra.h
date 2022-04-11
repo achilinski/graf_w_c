@@ -3,6 +3,6 @@
 
 #include <stdlib.h>
 
-double adijkstry(points_t* pts, int s);
+void dijkstra(graph_t *g, int a, int b);
 
 #endif //GRAF_W_C_DIJKSTRA_H
