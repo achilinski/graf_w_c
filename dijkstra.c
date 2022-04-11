@@ -103,4 +103,3 @@ void dijkstra(graph_t *g, int a, int b) {
     printf("%d\n", p_out[n]);
 
 }
-
