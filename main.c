@@ -19,6 +19,7 @@ int czy_n(char *n) {
 int main(int argc, char **argv) {
     int generate = 0, route = 0, integrity = 0, size_x, size_y, route_a, route_b;
     int in_f_i = -1, out_f_i = -1;
+    graph_t g= read_graph(argv[in_f_i]);
 
     //program zwraca kod błędu 2 dla złego formatu argumentów programu.
 
@@ -85,7 +86,6 @@ int main(int argc, char **argv) {
 
 
 
-    graph_t g= read_graph(argv[in_f_i]);
 
     printf("czy sp: %d\n", bfs(&g));
 
