@@ -16,7 +16,6 @@ typedef struct {
 typedef struct {
     point_t *points;
     int n;
-    int en;
 } graph_t;
 
 point_t init_pt();

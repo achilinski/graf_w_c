@@ -53,14 +53,18 @@ graph_t read_graph(char *name) {
     graph_t g= init_gt(x*y);
 
     int nl = 0;
-    while (/*(fscanf(inf, "%[^\n]", line))*/ fgets(line, 1024, inf) != NULL) {
-
+    while ( fgets(line, 1024, inf) != NULL) {
+        if(nl==x*y) {
+            fprintf(stderr, "Zadeklarowano wiecej wierzcholkow i sasiadow niz wielkosc grafu!\n");
+            exit(3);
+        }
 
         point_t pkt = init_pt(nl);
 
         int c;
         char tmp_read[32];
         for (i = 0; i < strlen(line); i++) {
+
             int id=-1;
             double weight=-1;
             while (isspace(line[i])  && i < strlen(line))
