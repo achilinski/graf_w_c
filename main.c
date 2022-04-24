@@ -7,6 +7,7 @@
 #include "bfs.h"
 #include "dijkstra.h"
 #include "gen.h"
+#include <sys/time.h>
 
 int czy_n(char *n) {
     while (*n != 0)
@@ -18,7 +19,12 @@ int czy_n(char *n) {
 }
 
 int main(int argc, char **argv) {
-    int generate = 0, route = 0, integrity = 0, size_x, size_y, route_a, route_b;
+
+	struct timeval begin, end;
+	gettimeofday(&begin, 0);
+	
+
+    int generate = 0, route = 0, integrity = 0, time = 0, size_x, size_y, route_a, route_b;
     int in_f_i = -1, out_f_i = -1;
     //program zwraca kod błędu 2 dla złego formatu argumentów programu.
 
@@ -72,11 +78,18 @@ int main(int argc, char **argv) {
             }
 
             out_f_i = ++i;
+	}else if(strcmp(argv[i], "--time")==0) {
+		time = 1;
         } else {
             printf("Zły argument - nieznany!!\n");
             exit(2);
         }
 
+    if (in_f_i == -1 && generate == 0) {
+	    fprintf(stderr, "Nalezy podac wymiary grafu do generowania lub plik do otwarcia z grafem");
+	    exit(2);
+    }
+	
     graph_t g;
     if (generate == 1) {
         if(out_f_i==-1){
@@ -99,6 +112,20 @@ int main(int argc, char **argv) {
     if (integrity == 1)
         printf("czy spojny: %d\n", bfs(&g));
 
+    if (time == 1) {
+	FILE * tfile = fopen("time_recorded.txt", "a");
+	if(tfile == NULL) {
+		fprintf(stderr, "Blad w otwarciu pliku %s do zapisu czasu", tfile);
+		exit(4);
+	}
+	
+	gettimeofday(&end, 0);
+	long seconds = end.tv_sec - begin.tv_sec;
+	long microseconds = end.tv_usec - begin.tv_usec;
+	double elapsed = seconds + microseconds*1e-6;
+	fprintf(stderr, "minelo: %.3f seconds.\n", elapsed);
+	fprintf(tfile, "%f	%d\n", elapsed, g.n);
+    }
 
     return 0;
 }
