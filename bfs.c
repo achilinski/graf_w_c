@@ -54,7 +54,12 @@ int bfs(graph_t *g) {
     for (; i < g->n; i++)
         if (visited[i] == 0) {
             printf("Nieodw: %d\n", i);
+            free(visited);
+            free(tab);
             return 0;
         }
+    free(visited);
+    free(tab);
+
     return 1;
 }

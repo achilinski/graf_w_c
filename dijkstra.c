@@ -102,4 +102,11 @@ void dijkstra(graph_t *g, int a, int b) {
         printf("%d -> ",p_out[n]);
     printf("%d\n", p_out[n]);
 
+    free(q.tab);
+    free(s.tab);
+    free(p);
+    free(d);
+    free(p_out);
+    free(d_out);
+
 }
