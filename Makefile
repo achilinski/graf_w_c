@@ -5,15 +5,15 @@ graph:
 
 debug:
 	$(CC) -g main.c points.c bfs.c dijkstra.c gen.c -o graph
-test-all: test test-n-spoj
-test:
-	@./graph --input tests/graf_test_1 --route 1 10 --int > tests/test_1_result 2>&1
+test: test-bfs test-n-spoj test-dijkstra
+test-bfs:
+	@./graph --input tests/graf_test_1 --int > tests/test_1_result 2>&1
 	@res=$$(diff -w tests/test_1_exp_result tests/test_1_result);\
 	if [ -z "$$res" ];\
 		then\
-			echo "test 1 ok";\
+			echo "test bfs ok";\
 		else\
-			echo "test 1 blad:";\
+			echo "test bfs blad:";\
 			echo $$res ;\
 		fi\
 
@@ -28,6 +28,16 @@ test-n-spoj:
 			echo $$res ;\
 		fi\
 
+test-dijkstra:
+	@./graph --input tests/graf_test_3 --route 1 24 > tests/test_3_result 2>&1
+	@res=$$(diff -w tests/test_3_exp_result tests/test_3_result);\
+	if [ -z "$$res" ];\
+		then\
+			echo "test dijkstra ok";\
+		else\
+			echo "test dijkstra blad:";\
+			echo $$res ;\
+		fi\
 
 
 

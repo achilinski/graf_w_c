@@ -1,5 +1,3 @@
 wymiary grafu:
 x = 20, y = 20
-Najkrotsza sciezka (dl. 4.72123):
-1 -> 21 -> 22 -> 42 -> 43 -> 44 -> 45 -> 46 -> 66 -> 67 -> 68 -> 48 -> 49 -> 50 -> 30 -> 10
 czy spojny: 1
