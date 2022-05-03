@@ -27,7 +27,10 @@ int main(int argc, char **argv) {
     int generate = 0, route = 0, integrity = 0, time = 0, size_x, size_y, route_a, route_b;
     int in_f_i = -1, out_f_i = -1;
     //program zwraca kod błędu 2 dla złego formatu argumentów programu.
-
+    if (argc < 2){
+        printf("Należy podać argumenty wywołania programu\n--size x y – określa wymiar grafu\n--route a b – określa najkrótszą ścieżkę między wybranymi punktami\n--input <File_Name> - program wczytuje dane z pliku o podanej nazwie. Gdy niepodajemy pliku do wczytania należy podać wymiaru grafu do wygenerowania.\n--output <File_Name> - program zapisuje wyniki do pliku o podanej nazwie\n--int – program zapisuje do pliku wynikowego informacje czy graf jest spójny\n");
+        exit(2);
+    }
     int i;
     for (i = 1; i < argc; i++)
         if (strcmp(argv[i], "--size") == 0) {
